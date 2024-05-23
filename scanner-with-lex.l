@@ -16,11 +16,11 @@ DELIMITER   [()[\]{},;]
 {DELIMITER}     { printf("Delimiter: %s\n\n", yytext); }
 {IDENTIFIER}    {
                     char *keywords[] = {"auto", "break", "case", "char", "const", "continue", "default", "do", "double", "else", "enum", "extern", "float", "for", "goto", "if", "int", "long", "register", "return", "short", "signed", "sizeof", "static", "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while"};
-                    int num_keywords = sizeof(keywords) / sizeof(keywords[0]);
+                    int num_keywords = sizeof(keywords);
                     int i;
                     int is_keyword = 0;
 
-                    for (i = 0; i < 32; ++i) {
+                    for (i = 0; i < num_keywords; ++i) {
                         if (strcmp(yytext, keywords[i]) == 0) {
                             printf("Keyword: %s\n\n", yytext);
                             is_keyword = 1;
