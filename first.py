@@ -20,27 +20,14 @@ def compute_first_sets(grammar):
         first_sets[symbol] = first(grammar, symbol)
 
     return first_sets
-def main():
-    # grammar = {
-    #     'E': ['T Edash'],
-    #     'Edash': ['+ T Edash', '#'],
-    #     'T': ['F Tdash'],
-    #     'Tdash': ['* F Tdash', '#'],
-    #     'F': ['( E )', 'a']
-    # }
-    
-    grammar = {
-        'S': ['A','B C'],
-        'A': ['a','b'],
-        'B': ['p','#'],
-        'C': ['c']
-    }
+grammar = {
+    'S': ['A','B C'],
+    'A': ['a','b'],
+    'B': ['p','#'],
+    'C': ['c']
+}
+first_sets = compute_first_sets(grammar)
+for symbol, first_set in first_sets.items():
+    if symbol != '#':
+        print(f'First({symbol}) = {first_set}')
 
-    first_sets = compute_first_sets(grammar)
-
-    for symbol, first_set in first_sets.items():
-        if symbol != '#':
-            print(f'First({symbol}) = {first_set}')
-
-if __name__ == "__main__":
-    main()
